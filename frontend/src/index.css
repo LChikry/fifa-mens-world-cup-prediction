@@ -1,0 +1,14 @@
+/* Base styles - imported in main.tsx */
+html {
+	font-size: 16px;
+}
+
+body {
+	margin: 0;
+	min-width: 320px;
+	min-height: 100vh;
+}
+
+#root {
+	min-height: 100vh;
+}

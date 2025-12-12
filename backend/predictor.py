@@ -271,6 +271,100 @@ class WorldCupPredictor:
         else:
             return team_b
     
+    def _create_32_team_bracket(self, group_results: Dict[str, List[Tuple[str, dict]]]) -> List[Tuple[str, str]]:
+        """
+        Create Round of 16 bracket for 32-team format following FIFA rules.
+        
+        Official FIFA Bracket Structure:
+        Left Side: 1A vs 2B, 1C vs 2D, 1E vs 2F, 1G vs 2H
+        Right Side: 1B vs 2A, 1D vs 2C, 1F vs 2E, 1H vs 2G
+        """
+        pairs = []
+        
+        # Left bracket
+        pairs.append((group_results['A'][0][0], group_results['B'][1][0]))  # 1A vs 2B
+        pairs.append((group_results['C'][0][0], group_results['D'][1][0]))  # 1C vs 2D
+        pairs.append((group_results['E'][0][0], group_results['F'][1][0]))  # 1E vs 2F
+        pairs.append((group_results['G'][0][0], group_results['H'][1][0]))  # 1G vs 2H
+        
+        # Right bracket
+        pairs.append((group_results['B'][0][0], group_results['A'][1][0]))  # 1B vs 2A
+        pairs.append((group_results['D'][0][0], group_results['C'][1][0]))  # 1D vs 2C
+        pairs.append((group_results['F'][0][0], group_results['E'][1][0]))  # 1F vs 2E
+        pairs.append((group_results['H'][0][0], group_results['G'][1][0]))  # 1H vs 2G
+        
+        return pairs
+    
+    def _create_48_team_bracket(
+        self, 
+        group_results: Dict[str, List[Tuple[str, dict]]], 
+        best_third_place: List[Tuple[str, int, int, str]]
+    ) -> List[Tuple[str, str]]:
+        """
+        Create Round of 32 bracket for 48-team format following FIFA rules.
+        
+        Structure: 12 Group Winners + 12 Runners-up + 8 Best 3rd Place = 32 teams
+        """
+        # Extract group winners and runners-up
+        winners = {group: standings[0][0] for group, standings in group_results.items()}
+        runners_up = {group: standings[1][0] for group, standings in group_results.items()}
+        
+        # Get best 8 third-place teams
+        third_place_teams = [t[0] for t in best_third_place[:8]]
+        
+        # Track used teams
+        used_teams = set()
+        pairs = []
+        third_idx = 0
+        
+        # Match 1-4: Winners A-D vs Runners-up (prefer cross-group matchups)
+        for i, group in enumerate(['A', 'B', 'C', 'D']):
+            opponent_group = ['B', 'A', 'D', 'C'][i]
+            if runners_up[opponent_group] not in used_teams:
+                pairs.append((winners[group], runners_up[opponent_group]))
+                used_teams.add(winners[group])
+                used_teams.add(runners_up[opponent_group])
+            elif third_idx < len(third_place_teams):
+                pairs.append((winners[group], third_place_teams[third_idx]))
+                used_teams.add(winners[group])
+                used_teams.add(third_place_teams[third_idx])
+                third_idx += 1
+        
+        # Match 5-8: Winners E-H vs Runners-up or 3rd Place
+        for i, group in enumerate(['E', 'F', 'G', 'H']):
+            opponent_group = ['F', 'E', 'H', 'G'][i]
+            if runners_up[opponent_group] not in used_teams:
+                pairs.append((winners[group], runners_up[opponent_group]))
+                used_teams.add(winners[group])
+                used_teams.add(runners_up[opponent_group])
+            elif third_idx < len(third_place_teams):
+                pairs.append((winners[group], third_place_teams[third_idx]))
+                used_teams.add(winners[group])
+                used_teams.add(third_place_teams[third_idx])
+                third_idx += 1
+        
+        # Match 9-12: Winners I-L vs Runners-up
+        pairs.append((winners['I'], runners_up['J']))
+        pairs.append((winners['J'], runners_up['I']))
+        pairs.append((winners['K'], runners_up['L']))
+        pairs.append((winners['L'], runners_up['K']))
+        used_teams.update([winners['I'], winners['J'], winners['K'], winners['L'],
+                          runners_up['I'], runners_up['J'], runners_up['K'], runners_up['L']])
+        
+        # Match 13-16: Remaining Runners-up and 3rd Place teams
+        unused_runners = [runners_up[g] for g in sorted(group_results.keys()) 
+                         if runners_up[g] not in used_teams]
+        unused_third = [t for t in third_place_teams if t not in used_teams]
+        
+        # Pair remaining teams
+        remaining = unused_runners + unused_third
+        for i in range(0, len(remaining), 2):
+            if i+1 < len(remaining):
+                pairs.append((remaining[i], remaining[i+1]))
+        
+        # Ensure we have exactly 16 pairs for Round of 32
+        return pairs[:16]
+    
     def simulate_tournament(
         self,
         groups: Dict[str, List[str]],
@@ -302,28 +396,32 @@ class WorldCupPredictor:
             # Simulate group stage
             group_results = self.simulate_group_stage(groups)
             
-            # Determine advancing teams
-            advancing = []
+            # Determine third-place teams for 48-team format
             third_place = []
-            
             for group_name, standings in group_results.items():
-                advancing.append(standings[0][0])  # Winner
-                advancing.append(standings[1][0])  # Runner-up
                 if use_third_place and len(standings) > 2:
                     third_place.append((
                         standings[2][0],
                         standings[2][1]['points'],
-                        standings[2][1]['gd']
+                        standings[2][1]['gd'],
+                        group_name
                     ))
             
-            # Add best third-place teams for 48-team format
+            # Sort third-place teams for 48-team format
             if use_third_place:
                 third_place.sort(key=lambda x: (x[1], x[2]), reverse=True)
-                advancing.extend([t[0] for t in third_place[:8]])
             
-            # Knockout rounds
-            np.random.shuffle(advancing)
-            current_round = advancing
+            # Create bracket pairs following FIFA rules
+            if tournament_format == "32_team":
+                bracket_pairs = self._create_32_team_bracket(group_results)
+            else:  # 48_team
+                bracket_pairs = self._create_48_team_bracket(group_results, third_place)
+            
+            # Simulate Round of 32 (or Round of 16 for 32-team)
+            current_round = [
+                self.simulate_knockout_match(pair[0], pair[1])
+                for pair in bracket_pairs
+            ]
             
             # Determine rounds based on format
             if tournament_format == "48_team":
@@ -331,7 +429,10 @@ class WorldCupPredictor:
             else:
                 round_names = ['Round of 16', 'Quarter Finals', 'Semi Finals', 'Final']
             
-            for round_name in round_names[:-1]:
+            # Start from Round of 16 (or Round of 32 for 48-team)
+            round_start_idx = 1 if tournament_format == "48_team" else 0
+            
+            for round_idx, round_name in enumerate(round_names[round_start_idx:-1], round_start_idx):
                 next_round = []
                 for i in range(0, len(current_round), 2):
                     if i + 1 < len(current_round):
