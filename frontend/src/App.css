@@ -103,7 +103,7 @@ body {
 
 .builder-content {
 	display: grid;
-	grid-template-columns: 280px 1fr 320px;
+	grid-template-columns: 280px 1fr;
 	flex: 1;
 	gap: 1px;
 	background: var(--border-color);
@@ -114,8 +114,7 @@ body {
 		grid-template-columns: 1fr;
 	}
 
-	.teams-sidebar,
-	.results-sidebar {
+	.teams-sidebar {
 		max-height: 400px;
 	}
 }
@@ -285,6 +284,54 @@ body {
 .groups-actions {
 	display: flex;
 	gap: 0.75rem;
+}
+
+/* Simulation Loading (above groups) */
+.simulation-loading {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
+	margin-bottom: 1.5rem;
+	background: var(--bg-card);
+	border-radius: 12px;
+	border: 1px solid var(--border-color);
+	gap: 1rem;
+}
+
+.simulation-loading p {
+	color: var(--text-secondary);
+	font-size: 0.95rem;
+}
+
+/* Simulation Results (above groups) */
+.simulation-results {
+	margin-bottom: 1.5rem;
+	padding: 1.25rem;
+	background: var(--bg-card);
+	border-radius: 12px;
+	border: 1px solid var(--border-color);
+}
+
+.simulation-results .results-panel {
+	height: auto;
+}
+
+.simulation-results .results-chart {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	gap: 0.5rem 1.5rem;
+	max-height: none;
+	overflow: visible;
+}
+
+.simulation-results .secondary-results {
+	margin-top: 1rem;
+}
+
+.simulation-results .finalists-list {
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 }
 
 .btn {

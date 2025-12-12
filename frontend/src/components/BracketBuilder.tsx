@@ -20,9 +20,6 @@ import { TeamSearch } from "./TeamSearch";
 import { FormatToggle } from "./FormatToggle";
 import { PresetSelector } from "./PresetSelector";
 import { ResultsPanel } from "./ResultsPanel";
-import { BracketVisualization } from "./BracketVisualization";
-
-type ViewMode = "groups" | "bracket";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
@@ -46,7 +43,6 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 	const [loading, setLoading] = useState(false);
 	const [activeId, setActiveId] = useState<string | null>(null);
 	const [presetName, setPresetName] = useState<string | null>(null);
-	const [viewMode, setViewMode] = useState<ViewMode>("groups");
 
 	const sensors = useSensors(
 		useSensor(PointerSensor, {
@@ -203,10 +199,6 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 			const result: SimulationResult = await response.json();
 			setResults(result);
 			setPresetName(null);
-			// Switch to bracket view after successful simulation
-			if (result.bracket) {
-				setViewMode("bracket");
-			}
 		} catch (error) {
 			console.error("Simulation failed:", error);
 			alert(
@@ -224,13 +216,7 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 		setGroups(createEmptyGroups(format));
 		setResults(null);
 		setPresetName(null);
-		setViewMode("groups");
 	}, [format]);
-
-	// Toggle view mode
-	const handleViewToggle = useCallback((mode: ViewMode) => {
-		setViewMode(mode);
-	}, []);
 
 	// Get active team for drag overlay
 	const activeTeam = activeId ? getTeamByName(activeId) : null;
@@ -269,61 +255,17 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 					</div>
 				</header>
 
-				<div
-					className={`builder-content ${
-						viewMode === "bracket" ? "bracket-view" : ""
-					}`}
-				>
-					{/* Teams sidebar - only show in groups view */}
-					{viewMode === "groups" && (
-						<aside className="teams-sidebar">
-							<TeamSearch
-								teams={teams}
-								assignedTeams={assignedTeams}
-							/>
-						</aside>
-					)}
+				<div className="builder-content">
+					<aside className="teams-sidebar">
+						<TeamSearch
+							teams={teams}
+							assignedTeams={assignedTeams}
+						/>
+					</aside>
 
-					<main
-						className={
-							viewMode === "bracket"
-								? "bracket-area"
-								: "groups-area"
-						}
-					>
-						{/* Header with view toggle and actions */}
+					<main className="groups-area">
 						<div className="groups-header">
-							{/* View Toggle */}
-							{results?.bracket && (
-								<div className="view-toggle">
-									<button
-										className={`view-btn ${
-											viewMode === "groups"
-												? "active"
-												: ""
-										}`}
-										onClick={() =>
-											handleViewToggle("groups")
-										}
-									>
-										Groups
-									</button>
-									<button
-										className={`view-btn ${
-											viewMode === "bracket"
-												? "active"
-												: ""
-										}`}
-										onClick={() =>
-											handleViewToggle("bracket")
-										}
-									>
-										Bracket
-									</button>
-								</div>
-							)}
-							{!results?.bracket && <h2>Tournament Groups</h2>}
-
+							<h2>Tournament Groups</h2>
 							<div className="groups-actions">
 								<button
 									className="btn btn-secondary"
@@ -345,46 +287,43 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 							</div>
 						</div>
 
-						{/* Main Content - Groups or Bracket */}
-						{viewMode === "groups" ? (
-							<div className={`groups-grid groups-${numGroups}`}>
-								{Object.entries(groups).map(
-									([groupName, teamNames]) => (
-										<GroupSlot
-											key={groupName}
-											groupName={groupName}
-											teams={getGroupTeams(teamNames)}
-											maxTeams={4}
-											onRemoveTeam={(teamName) =>
-												handleRemoveTeam(
-													groupName,
-													teamName
-												)
-											}
-										/>
-									)
-								)}
+						{/* Loading and Results shown above groups */}
+						{loading && (
+							<div className="simulation-loading">
+								<div className="spinner"></div>
+								<p>Running simulation...</p>
 							</div>
-						) : (
-							results?.bracket && (
-								<BracketVisualization
-									bracket={results.bracket}
-									teams={teams}
-									format={format}
-								/>
-							)
 						)}
-					</main>
 
-					{/* Results sidebar - compact in bracket view */}
-					<aside className="results-sidebar">
-						<ResultsPanel
-							results={results}
-							loading={loading}
-							presetName={presetName || undefined}
-							compact={viewMode === "bracket"}
-						/>
-					</aside>
+						{!loading && results && (
+							<div className="simulation-results">
+								<ResultsPanel
+									results={results}
+									loading={false}
+									presetName={presetName || undefined}
+								/>
+							</div>
+						)}
+
+						<div className={`groups-grid groups-${numGroups}`}>
+							{Object.entries(groups).map(
+								([groupName, teamNames]) => (
+									<GroupSlot
+										key={groupName}
+										groupName={groupName}
+										teams={getGroupTeams(teamNames)}
+										maxTeams={4}
+										onRemoveTeam={(teamName) =>
+											handleRemoveTeam(
+												groupName,
+												teamName
+											)
+										}
+									/>
+								)
+							)}
+						</div>
+					</main>
 				</div>
 			</div>
 
