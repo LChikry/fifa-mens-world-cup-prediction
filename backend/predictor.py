@@ -458,6 +458,229 @@ class WorldCupPredictor:
             'n_sims': n_tournament_sims
         }
     
+    def get_knockout_win_probability(self, team_a: str, team_b: str) -> Tuple[str, float]:
+        """
+        Calculate the probability of team_a winning a knockout match against team_b.
+        Returns (winner, win_probability) where winner is the team with higher probability.
+        """
+        result = self.predict_match(team_a, team_b, n_sims=10000)
+        
+        if result is None:
+            # Fallback: use Elo to decide
+            elo_a = self.elo_ratings.get(team_a, 1500)
+            elo_b = self.elo_ratings.get(team_b, 1500)
+            if elo_a >= elo_b:
+                return team_a, 0.5 + (elo_a - elo_b) / 1000
+            else:
+                return team_b, 0.5 + (elo_b - elo_a) / 1000
+        
+        # For knockouts, add half of draw probability to each team
+        adj_a_win = result['home_win_prob'] + result['draw_prob'] / 2
+        adj_b_win = result['away_win_prob'] + result['draw_prob'] / 2
+        
+        if adj_a_win >= adj_b_win:
+            return team_a, adj_a_win
+        else:
+            return team_b, adj_b_win
+    
+    def simulate_deterministic_group_stage(
+        self,
+        groups: Dict[str, List[str]]
+    ) -> Dict[str, List[Tuple[str, dict]]]:
+        """
+        Simulate group stage deterministically (no randomness).
+        Uses expected values and probabilities to determine outcomes.
+        """
+        self.load_models()
+        group_results = {}
+        
+        for group_name, teams in groups.items():
+            standings = {team: {'points': 0, 'gd': 0, 'gf': 0, 'wins': 0} for team in teams}
+            
+            # Play all group matches (round robin)
+            for i, team_a in enumerate(teams):
+                for team_b in teams[i+1:]:
+                    result = self.predict_match(team_a, team_b, n_sims=10000)
+                    
+                    if result is None:
+                        continue
+                    
+                    # Deterministically pick the most likely outcome
+                    max_prob = max(result['home_win_prob'], result['draw_prob'], result['away_win_prob'])
+                    
+                    if result['home_win_prob'] == max_prob:
+                        # Team A wins
+                        standings[team_a]['points'] += 3
+                        standings[team_a]['wins'] += 1
+                        standings[team_a]['gf'] += result['expected_home_goals']
+                        standings[team_a]['gd'] += result['expected_home_goals'] - result['expected_away_goals']
+                        standings[team_b]['gf'] += result['expected_away_goals']
+                        standings[team_b]['gd'] += result['expected_away_goals'] - result['expected_home_goals']
+                    elif result['draw_prob'] == max_prob:
+                        # Draw
+                        standings[team_a]['points'] += 1
+                        standings[team_b]['points'] += 1
+                        standings[team_a]['gf'] += result['expected_home_goals']
+                        standings[team_b]['gf'] += result['expected_away_goals']
+                    else:
+                        # Team B wins
+                        standings[team_b]['points'] += 3
+                        standings[team_b]['wins'] += 1
+                        standings[team_b]['gf'] += result['expected_away_goals']
+                        standings[team_b]['gd'] += result['expected_away_goals'] - result['expected_home_goals']
+                        standings[team_a]['gf'] += result['expected_home_goals']
+                        standings[team_a]['gd'] += result['expected_home_goals'] - result['expected_away_goals']
+            
+            # Sort by points, then goal difference
+            sorted_teams = sorted(
+                standings.items(),
+                key=lambda x: (x[1]['points'], x[1]['gd'], x[1]['gf']),
+                reverse=True
+            )
+            group_results[group_name] = sorted_teams
+        
+        return group_results
+    
+    def simulate_deterministic_tournament(
+        self,
+        groups: Dict[str, List[str]],
+        tournament_format: str = "32_team"
+    ) -> dict:
+        """
+        Run a single deterministic tournament simulation.
+        
+        Returns bracket with match-by-match predictions and win probabilities.
+        The winner of each match is the team with the higher win probability.
+        """
+        self.load_models()
+        
+        use_third_place = tournament_format == "48_team"
+        
+        # Simulate group stage deterministically
+        group_results = self.simulate_deterministic_group_stage(groups)
+        
+        # Format group results for output
+        formatted_groups = {}
+        for group_name, standings in group_results.items():
+            formatted_groups[group_name] = [
+                {
+                    'team': team,
+                    'points': stats['points'],
+                    'gd': round(stats['gd'], 1),
+                    'gf': round(stats['gf'], 1)
+                }
+                for team, stats in standings
+            ]
+        
+        # Determine third-place teams for 48-team format
+        third_place = []
+        for group_name, standings in group_results.items():
+            if use_third_place and len(standings) > 2:
+                third_place.append((
+                    standings[2][0],
+                    standings[2][1]['points'],
+                    standings[2][1]['gd'],
+                    group_name
+                ))
+        
+        if use_third_place:
+            third_place.sort(key=lambda x: (x[1], x[2]), reverse=True)
+        
+        # Create bracket pairs following FIFA rules
+        if tournament_format == "32_team":
+            bracket_pairs = self._create_32_team_bracket(group_results)
+            first_round_name = 'round_of_16'
+        else:
+            bracket_pairs = self._create_48_team_bracket(group_results, third_place)
+            first_round_name = 'round_of_32'
+        
+        bracket = {}
+        
+        # First knockout round (R16 or R32)
+        first_round_matches = []
+        current_round_teams = []
+        for team_a, team_b in bracket_pairs:
+            winner, win_prob = self.get_knockout_win_probability(team_a, team_b)
+            first_round_matches.append({
+                'team_a': team_a,
+                'team_b': team_b,
+                'winner': winner,
+                'win_prob': round(win_prob, 3)
+            })
+            current_round_teams.append(winner)
+        bracket[first_round_name] = first_round_matches
+        
+        # For 48-team, we need Round of 16 after Round of 32
+        if tournament_format == "48_team":
+            r16_matches = []
+            next_round_teams = []
+            for i in range(0, len(current_round_teams), 2):
+                if i + 1 < len(current_round_teams):
+                    team_a = current_round_teams[i]
+                    team_b = current_round_teams[i + 1]
+                    winner, win_prob = self.get_knockout_win_probability(team_a, team_b)
+                    r16_matches.append({
+                        'team_a': team_a,
+                        'team_b': team_b,
+                        'winner': winner,
+                        'win_prob': round(win_prob, 3)
+                    })
+                    next_round_teams.append(winner)
+            bracket['round_of_16'] = r16_matches
+            current_round_teams = next_round_teams
+        
+        # Quarter Finals
+        qf_matches = []
+        sf_teams = []
+        for i in range(0, len(current_round_teams), 2):
+            if i + 1 < len(current_round_teams):
+                team_a = current_round_teams[i]
+                team_b = current_round_teams[i + 1]
+                winner, win_prob = self.get_knockout_win_probability(team_a, team_b)
+                qf_matches.append({
+                    'team_a': team_a,
+                    'team_b': team_b,
+                    'winner': winner,
+                    'win_prob': round(win_prob, 3)
+                })
+                sf_teams.append(winner)
+        bracket['quarter_finals'] = qf_matches
+        
+        # Semi Finals
+        sf_matches = []
+        final_teams = []
+        for i in range(0, len(sf_teams), 2):
+            if i + 1 < len(sf_teams):
+                team_a = sf_teams[i]
+                team_b = sf_teams[i + 1]
+                winner, win_prob = self.get_knockout_win_probability(team_a, team_b)
+                sf_matches.append({
+                    'team_a': team_a,
+                    'team_b': team_b,
+                    'winner': winner,
+                    'win_prob': round(win_prob, 3)
+                })
+                final_teams.append(winner)
+        bracket['semi_finals'] = sf_matches
+        
+        # Final
+        if len(final_teams) >= 2:
+            team_a = final_teams[0]
+            team_b = final_teams[1]
+            winner, win_prob = self.get_knockout_win_probability(team_a, team_b)
+            bracket['final'] = {
+                'team_a': team_a,
+                'team_b': team_b,
+                'winner': winner,
+                'win_prob': round(win_prob, 3)
+            }
+            bracket['champion'] = winner
+        
+        return {
+            'group_results': formatted_groups,
+            'bracket': bracket
+        }
+    
     def load_preset(self, preset_name: str) -> Optional[dict]:
         """
         Load a preset tournament configuration and its pre-computed results.

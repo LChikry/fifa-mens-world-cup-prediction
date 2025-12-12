@@ -4,16 +4,20 @@ interface ResultsPanelProps {
 	results: SimulationResult | null;
 	loading?: boolean;
 	presetName?: string;
+	compact?: boolean;
 }
 
 export function ResultsPanel({
 	results,
 	loading,
 	presetName,
+	compact = false,
 }: ResultsPanelProps) {
 	if (loading) {
 		return (
-			<div className="results-panel loading">
+			<div
+				className={`results-panel loading ${compact ? "compact" : ""}`}
+			>
 				<div className="spinner"></div>
 				<p>Running simulation...</p>
 			</div>
@@ -22,32 +26,34 @@ export function ResultsPanel({
 
 	if (!results) {
 		return (
-			<div className="results-panel empty">
+			<div className={`results-panel empty ${compact ? "compact" : ""}`}>
 				<p>
-					Configure groups and click "Run Simulation" to see
-					predictions
+					{compact
+						? "Run simulation to see probabilities"
+						: 'Configure groups and click "Run Simulation" to see predictions'}
 				</p>
 			</div>
 		);
 	}
 
 	// Sort champions by count and get probabilities
+	// Show top 10 in compact mode, top 15 otherwise
 	const sortedChampions = Object.entries(results.champions)
 		.sort(([, a], [, b]) => b - a)
-		.slice(0, 15);
+		.slice(0, compact ? 10 : 15);
 
 	const maxCount = sortedChampions[0]?.[1] || 1;
 
 	return (
-		<div className="results-panel">
-			<h2>
-				Championship Probabilities
+		<div className={`results-panel ${compact ? "compact" : ""}`}>
+			<h3 className="results-title">
+				Win Probabilities
 				{presetName && (
 					<span className="preset-badge">{presetName}</span>
 				)}
-			</h2>
+			</h3>
 			<p className="sim-info">
-				Based on {results.n_sims.toLocaleString()} simulations
+				{results.n_sims.toLocaleString()} simulations
 			</p>
 
 			<div className="results-chart">
@@ -72,29 +78,6 @@ export function ResultsPanel({
 					);
 				})}
 			</div>
-
-			{results.finalists && Object.keys(results.finalists).length > 0 && (
-				<div className="secondary-results">
-					<h3>Most Likely Finalists</h3>
-					<div className="finalists-list">
-						{Object.entries(results.finalists)
-							.sort(([, a], [, b]) => b - a)
-							.slice(0, 8)
-							.map(([team, count]) => (
-								<div key={team} className="finalist-item">
-									<span className="team">{team}</span>
-									<span className="prob">
-										{(
-											(count / results.n_sims) *
-											100
-										).toFixed(1)}
-										%
-									</span>
-								</div>
-							))}
-					</div>
-				</div>
-			)}
 		</div>
 	);
 }

@@ -68,6 +68,41 @@ class SimulationResponse(BaseModel):
     n_sims: int
 
 
+# Bracket-related models
+class BracketMatch(BaseModel):
+    team_a: str
+    team_b: str
+    winner: str
+    win_prob: float
+
+
+class GroupStanding(BaseModel):
+    team: str
+    points: int
+    gd: float
+    gf: float
+
+
+class Bracket(BaseModel):
+    round_of_32: Optional[List[BracketMatch]] = None  # 48-team only
+    round_of_16: Optional[List[BracketMatch]] = None
+    quarter_finals: List[BracketMatch]
+    semi_finals: List[BracketMatch]
+    final: BracketMatch
+    champion: str
+
+
+class BracketSimulationResponse(BaseModel):
+    # Monte Carlo results
+    champions: Dict[str, int]
+    finalists: Dict[str, int]
+    semifinalists: Dict[str, int]
+    n_sims: int
+    # Deterministic bracket prediction
+    group_results: Dict[str, List[GroupStanding]]
+    bracket: Bracket
+
+
 class PresetResponse(BaseModel):
     name: str
     format: str
@@ -135,13 +170,14 @@ async def predict_match(request: MatchPredictionRequest):
         raise HTTPException(status_code=500, detail=f"Prediction failed: {str(e)}")
 
 
-@app.post("/api/simulate", response_model=SimulationResponse)
+@app.post("/api/simulate", response_model=BracketSimulationResponse)
 async def simulate_tournament(request: SimulationRequest):
     """
     Run a full tournament simulation with custom groups.
     
-    This performs a Monte Carlo simulation of the entire tournament
-    and returns championship probabilities for each team.
+    This performs:
+    1. Monte Carlo simulation for championship probabilities
+    2. Deterministic bracket prediction showing most likely outcomes
     """
     try:
         # Validate format
@@ -167,14 +203,28 @@ async def simulate_tournament(request: SimulationRequest):
                     detail=f"Group {group_name} must have exactly 4 teams, got {len(teams)}"
                 )
         
-        # Run simulation
-        result = predictor.simulate_tournament(
+        # Run Monte Carlo simulation for probabilities
+        mc_result = predictor.simulate_tournament(
             groups=request.groups,
             tournament_format=request.format,
             n_tournament_sims=min(request.n_sims, 500)  # Cap at 500 for performance
         )
         
-        return SimulationResponse(**result)
+        # Run deterministic simulation for bracket prediction
+        bracket_result = predictor.simulate_deterministic_tournament(
+            groups=request.groups,
+            tournament_format=request.format
+        )
+        
+        # Combine results
+        return BracketSimulationResponse(
+            champions=mc_result['champions'],
+            finalists=mc_result['finalists'],
+            semifinalists=mc_result['semifinalists'],
+            n_sims=mc_result['n_sims'],
+            group_results=bracket_result['group_results'],
+            bracket=bracket_result['bracket']
+        )
     except HTTPException:
         raise
     except Exception as e:
