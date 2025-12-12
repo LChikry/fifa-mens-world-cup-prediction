@@ -1,14 +1,13 @@
 import { useState, useCallback, useMemo } from "react";
 import {
 	DndContext,
-	DragEndEvent,
 	DragOverlay,
-	DragStartEvent,
 	PointerSensor,
 	useSensor,
 	useSensors,
 } from "@dnd-kit/core";
-import {
+import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
+import type {
 	Team,
 	Groups,
 	TournamentFormat,

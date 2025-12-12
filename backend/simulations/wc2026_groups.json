@@ -1,0 +1,78 @@
+{
+  "name": "2026 FIFA World Cup (Projected)",
+  "format": "48_team",
+  "groups": {
+    "A": [
+      "Spain",
+      "Australia",
+      "Switzerland",
+      "Czech Republic"
+    ],
+    "B": [
+      "Argentina",
+      "Mexico",
+      "Norway",
+      "Nigeria"
+    ],
+    "C": [
+      "France",
+      "Algeria",
+      "Denmark",
+      "Costa Rica"
+    ],
+    "D": [
+      "Colombia",
+      "Canada",
+      "Turkey",
+      "Scotland"
+    ],
+    "E": [
+      "England",
+      "Iran",
+      "Belgium",
+      "Jordan"
+    ],
+    "F": [
+      "Japan",
+      "Uruguay",
+      "Russia",
+      "Greece"
+    ],
+    "G": [
+      "Brazil",
+      "Italy",
+      "Paraguay",
+      "Chile"
+    ],
+    "H": [
+      "Morocco",
+      "Uzbekistan",
+      "Panama",
+      "Serbia"
+    ],
+    "I": [
+      "Portugal",
+      "United States",
+      "Austria",
+      "Egypt"
+    ],
+    "J": [
+      "Netherlands",
+      "Senegal",
+      "Iraq",
+      "Ivory Coast"
+    ],
+    "K": [
+      "Germany",
+      "Croatia",
+      "Tunisia",
+      "Poland"
+    ],
+    "L": [
+      "South Korea",
+      "Ecuador",
+      "Saudi Arabia",
+      "Ukraine"
+    ]
+  }
+}

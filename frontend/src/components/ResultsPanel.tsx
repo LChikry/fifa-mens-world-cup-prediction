@@ -1,4 +1,4 @@
-import { SimulationResult } from "../types";
+import type { SimulationResult } from "../types";
 
 interface ResultsPanelProps {
 	results: SimulationResult | null;

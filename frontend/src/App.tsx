@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BracketBuilder } from "./components";
-import { Team } from "./types";
+import type { Team } from "./types";
 import "./App.css";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";

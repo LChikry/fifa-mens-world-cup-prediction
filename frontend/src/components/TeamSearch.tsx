@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Team } from "../types";
+import type { Team } from "../types";
 import { TeamCard } from "./TeamCard";
 
 interface TeamSearchProps {

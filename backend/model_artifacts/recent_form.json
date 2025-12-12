@@ -1,0 +1,1172 @@
+{
+  "Iran": {
+    "avg_scored": 0.6,
+    "avg_conceded": 0.6,
+    "win_rate": 0.2
+  },
+  "North Korea": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.6,
+    "win_rate": 0.0
+  },
+  "Syria": {
+    "avg_scored": 0.8,
+    "avg_conceded": 0.4,
+    "win_rate": 0.4
+  },
+  "Zimbabwe": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.2,
+    "win_rate": 0.2
+  },
+  "Yemen": {
+    "avg_scored": 4.4,
+    "avg_conceded": 1.0,
+    "win_rate": 0.6
+  },
+  "Tajikistan": {
+    "avg_scored": 2.8,
+    "avg_conceded": 0.4,
+    "win_rate": 0.8
+  },
+  "Qatar": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.6,
+    "win_rate": 0.2
+  },
+  "Mali": {
+    "avg_scored": 1.8,
+    "avg_conceded": 0.4,
+    "win_rate": 0.6
+  },
+  "Angola": {
+    "avg_scored": 1.6,
+    "avg_conceded": 1.4,
+    "win_rate": 0.4
+  },
+  "Gambia": {
+    "avg_scored": 3.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "Gabon": {
+    "avg_scored": 2.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "Mozambique": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Egypt": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.6,
+    "win_rate": 0.0
+  },
+  "Tanzania": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.8,
+    "win_rate": 0.0
+  },
+  "Ivory Coast": {
+    "avg_scored": 2.4,
+    "avg_conceded": 0.2,
+    "win_rate": 0.6
+  },
+  "Ghana": {
+    "avg_scored": 1.4,
+    "avg_conceded": 0.6,
+    "win_rate": 0.6
+  },
+  "Malawi": {
+    "avg_scored": 0.2,
+    "avg_conceded": 0.6,
+    "win_rate": 0.2
+  },
+  "Benin": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "Libya": {
+    "avg_scored": 1.2,
+    "avg_conceded": 0.6,
+    "win_rate": 0.4
+  },
+  "Nigeria": {
+    "avg_scored": 2.4,
+    "avg_conceded": 0.8,
+    "win_rate": 0.6
+  },
+  "Zambia": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.8,
+    "win_rate": 0.2
+  },
+  "Thailand": {
+    "avg_scored": 3.0,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Jordan": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.6
+  },
+  "United Arab Emirates": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.2
+  },
+  "Malaysia": {
+    "avg_scored": 2.4,
+    "avg_conceded": 0.4,
+    "win_rate": 1.0
+  },
+  "Bahrain": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.8,
+    "win_rate": 0.4
+  },
+  "Hong Kong": {
+    "avg_scored": 3.0,
+    "avg_conceded": 1.4,
+    "win_rate": 0.4
+  },
+  "Lebanon": {
+    "avg_scored": 2.0,
+    "avg_conceded": 0.4,
+    "win_rate": 0.6
+  },
+  "Vietnam": {
+    "avg_scored": 2.2,
+    "avg_conceded": 1.0,
+    "win_rate": 0.8
+  },
+  "Indonesia": {
+    "avg_scored": 1.6,
+    "avg_conceded": 2.0,
+    "win_rate": 0.2
+  },
+  "Oman": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.0,
+    "win_rate": 0.2
+  },
+  "China": {
+    "avg_scored": 0.4,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Kuwait": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.8,
+    "win_rate": 0.2
+  },
+  "Australia": {
+    "avg_scored": 1.0,
+    "avg_conceded": 1.4,
+    "win_rate": 0.4
+  },
+  "Japan": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.2,
+    "win_rate": 0.6
+  },
+  "Singapore": {
+    "avg_scored": 1.6,
+    "avg_conceded": 1.4,
+    "win_rate": 0.4
+  },
+  "Rwanda": {
+    "avg_scored": 0.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.2
+  },
+  "South Korea": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "Kenya": {
+    "avg_scored": 1.2,
+    "avg_conceded": 2.4,
+    "win_rate": 0.4
+  },
+  "Cameroon": {
+    "avg_scored": 1.0,
+    "avg_conceded": 0.4,
+    "win_rate": 0.4
+  },
+  "Tunisia": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Algeria": {
+    "avg_scored": 2.4,
+    "avg_conceded": 0.4,
+    "win_rate": 0.8
+  },
+  "Burkina Faso": {
+    "avg_scored": 2.0,
+    "avg_conceded": 0.6,
+    "win_rate": 0.8
+  },
+  "Taiwan": {
+    "avg_scored": 0.6,
+    "avg_conceded": 4.0,
+    "win_rate": 0.0
+  },
+  "Philippines": {
+    "avg_scored": 3.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.8
+  },
+  "Finland": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.8,
+    "win_rate": 0.4
+  },
+  "Poland": {
+    "avg_scored": 2.0,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Sweden": {
+    "avg_scored": 0.4,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Chile": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.0,
+    "win_rate": 0.6
+  },
+  "Panama": {
+    "avg_scored": 1.8,
+    "avg_conceded": 0.8,
+    "win_rate": 0.6
+  },
+  "Latvia": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "South Africa": {
+    "avg_scored": 2.0,
+    "avg_conceded": 0.4,
+    "win_rate": 0.6
+  },
+  "Eswatini": {
+    "avg_scored": 0.2,
+    "avg_conceded": 0.8,
+    "win_rate": 0.0
+  },
+  "United States": {
+    "avg_scored": 2.4,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Honduras": {
+    "avg_scored": 1.0,
+    "avg_conceded": 0.4,
+    "win_rate": 0.4
+  },
+  "Argentina": {
+    "avg_scored": 2.4,
+    "avg_conceded": 0.2,
+    "win_rate": 0.8
+  },
+  "Costa Rica": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.0,
+    "win_rate": 0.2
+  },
+  "Jamaica": {
+    "avg_scored": 1.4,
+    "avg_conceded": 0.6,
+    "win_rate": 0.4
+  },
+  "Canada": {
+    "avg_scored": 0.6,
+    "avg_conceded": 0.2,
+    "win_rate": 0.4
+  },
+  "Venezuela": {
+    "avg_scored": 0.8,
+    "avg_conceded": 2.4,
+    "win_rate": 0.2
+  },
+  "Sri Lanka": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.6,
+    "win_rate": 0.2
+  },
+  "Myanmar": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.0,
+    "win_rate": 0.4
+  },
+  "Bangladesh": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.2
+  },
+  "Kyrgyzstan": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "India": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.2
+  },
+  "Turkmenistan": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.4
+  },
+  "Kosovo": {
+    "avg_scored": 1.2,
+    "avg_conceded": 0.2,
+    "win_rate": 0.6
+  },
+  "Albania": {
+    "avg_scored": 1.4,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Mexico": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.8,
+    "win_rate": 0.0
+  },
+  "Bolivia": {
+    "avg_scored": 0.4,
+    "avg_conceded": 1.6,
+    "win_rate": 0.4
+  },
+  "El Salvador": {
+    "avg_scored": 0.2,
+    "avg_conceded": 2.2,
+    "win_rate": 0.0
+  },
+  "Azerbaijan": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.2,
+    "win_rate": 0.0
+  },
+  "Cura\u00e7ao": {
+    "avg_scored": 2.6,
+    "avg_conceded": 0.6,
+    "win_rate": 0.6
+  },
+  "Bonaire": {
+    "avg_scored": 1.2,
+    "avg_conceded": 3.2,
+    "win_rate": 0.0
+  },
+  "Brazil": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Ireland": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.0,
+    "win_rate": 0.6
+  },
+  "Guadeloupe": {
+    "avg_scored": 1.4,
+    "avg_conceded": 2.0,
+    "win_rate": 0.4
+  },
+  "Saint Kitts and Nevis": {
+    "avg_scored": 1.2,
+    "avg_conceded": 2.6,
+    "win_rate": 0.2
+  },
+  "Hungary": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.6,
+    "win_rate": 0.4
+  },
+  "Russia": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.6
+  },
+  "Turkey": {
+    "avg_scored": 2.8,
+    "avg_conceded": 2.0,
+    "win_rate": 0.6
+  },
+  "Switzerland": {
+    "avg_scored": 2.0,
+    "avg_conceded": 0.4,
+    "win_rate": 0.6
+  },
+  "Uruguay": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Germany": {
+    "avg_scored": 3.2,
+    "avg_conceded": 0.2,
+    "win_rate": 1.0
+  },
+  "Scotland": {
+    "avg_scored": 2.6,
+    "avg_conceded": 1.4,
+    "win_rate": 0.8
+  },
+  "Czech Republic": {
+    "avg_scored": 1.8,
+    "avg_conceded": 0.6,
+    "win_rate": 0.4
+  },
+  "Wales": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.8,
+    "win_rate": 0.4
+  },
+  "Northern Ireland": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Austria": {
+    "avg_scored": 3.0,
+    "avg_conceded": 0.6,
+    "win_rate": 0.6
+  },
+  "Denmark": {
+    "avg_scored": 3.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "Belgium": {
+    "avg_scored": 3.6,
+    "avg_conceded": 0.6,
+    "win_rate": 0.6
+  },
+  "Croatia": {
+    "avg_scored": 2.6,
+    "avg_conceded": 0.6,
+    "win_rate": 0.8
+  },
+  "New Zealand": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.8,
+    "win_rate": 0.0
+  },
+  "Slovakia": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.6,
+    "win_rate": 0.6
+  },
+  "Norway": {
+    "avg_scored": 5.0,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Malta": {
+    "avg_scored": 1.4,
+    "avg_conceded": 2.4,
+    "win_rate": 0.4
+  },
+  "Luxembourg": {
+    "avg_scored": 0.0,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Georgia": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.4,
+    "win_rate": 0.2
+  },
+  "Estonia": {
+    "avg_scored": 1.4,
+    "avg_conceded": 2.0,
+    "win_rate": 0.2
+  },
+  "Bulgaria": {
+    "avg_scored": 0.6,
+    "avg_conceded": 3.2,
+    "win_rate": 0.2
+  },
+  "Romania": {
+    "avg_scored": 2.6,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "Israel": {
+    "avg_scored": 1.6,
+    "avg_conceded": 2.8,
+    "win_rate": 0.2
+  },
+  "Belarus": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.4,
+    "win_rate": 0.0
+  },
+  "Armenia": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.8,
+    "win_rate": 0.2
+  },
+  "Cyprus": {
+    "avg_scored": 2.0,
+    "avg_conceded": 2.0,
+    "win_rate": 0.2
+  },
+  "Iceland": {
+    "avg_scored": 1.6,
+    "avg_conceded": 2.2,
+    "win_rate": 0.2
+  },
+  "North Macedonia": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.6,
+    "win_rate": 0.2
+  },
+  "Montenegro": {
+    "avg_scored": 1.2,
+    "avg_conceded": 2.6,
+    "win_rate": 0.4
+  },
+  "Moldova": {
+    "avg_scored": 0.8,
+    "avg_conceded": 4.0,
+    "win_rate": 0.0
+  },
+  "Kazakhstan": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.8,
+    "win_rate": 0.2
+  },
+  "France": {
+    "avg_scored": 2.8,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Spain": {
+    "avg_scored": 3.6,
+    "avg_conceded": 0.4,
+    "win_rate": 0.8
+  },
+  "Guatemala": {
+    "avg_scored": 1.6,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Italy": {
+    "avg_scored": 2.8,
+    "avg_conceded": 1.8,
+    "win_rate": 0.8
+  },
+  "Portugal": {
+    "avg_scored": 3.0,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "Uzbekistan": {
+    "avg_scored": 1.2,
+    "avg_conceded": 0.4,
+    "win_rate": 0.6
+  },
+  "Slovenia": {
+    "avg_scored": 0.2,
+    "avg_conceded": 1.2,
+    "win_rate": 0.0
+  },
+  "Namibia": {
+    "avg_scored": 0.8,
+    "avg_conceded": 2.2,
+    "win_rate": 0.2
+  },
+  "Uganda": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "DR Congo": {
+    "avg_scored": 1.2,
+    "avg_conceded": 0.8,
+    "win_rate": 0.6
+  },
+  "Bosnia and Herzegovina": {
+    "avg_scored": 2.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.4
+  },
+  "Netherlands": {
+    "avg_scored": 3.2,
+    "avg_conceded": 0.6,
+    "win_rate": 0.8
+  },
+  "Greece": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.2,
+    "win_rate": 0.2
+  },
+  "Senegal": {
+    "avg_scored": 4.0,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Serbia": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.0,
+    "win_rate": 0.4
+  },
+  "Botswana": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "England": {
+    "avg_scored": 3.4,
+    "avg_conceded": 0.0,
+    "win_rate": 1.0
+  },
+  "Sierra Leone": {
+    "avg_scored": 1.0,
+    "avg_conceded": 0.8,
+    "win_rate": 0.4
+  },
+  "Guinea": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Niger": {
+    "avg_scored": 1.6,
+    "avg_conceded": 1.0,
+    "win_rate": 0.6
+  },
+  "Faroe Islands": {
+    "avg_scored": 1.8,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Martinique": {
+    "avg_scored": 0.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.0
+  },
+  "Haiti": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.6
+  },
+  "Paraguay": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.4
+  },
+  "Trinidad and Tobago": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Ecuador": {
+    "avg_scored": 1.0,
+    "avg_conceded": 0.4,
+    "win_rate": 0.4
+  },
+  "Togo": {
+    "avg_scored": 0.2,
+    "avg_conceded": 1.0,
+    "win_rate": 0.2
+  },
+  "Aruba": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Saudi Arabia": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.2,
+    "win_rate": 0.6
+  },
+  "Cape Verde": {
+    "avg_scored": 1.6,
+    "avg_conceded": 0.8,
+    "win_rate": 0.4
+  },
+  "Ukraine": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.8,
+    "win_rate": 0.6
+  },
+  "Lithuania": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.2,
+    "win_rate": 0.0
+  },
+  "Colombia": {
+    "avg_scored": 3.0,
+    "avg_conceded": 0.8,
+    "win_rate": 0.8
+  },
+  "Andorra": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Grenada": {
+    "avg_scored": 3.8,
+    "avg_conceded": 0.8,
+    "win_rate": 1.0
+  },
+  "Sudan": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.6,
+    "win_rate": 0.2
+  },
+  "Palestine": {
+    "avg_scored": 0.8,
+    "avg_conceded": 0.8,
+    "win_rate": 0.2
+  },
+  "Northern Mariana Islands": {
+    "avg_scored": 1.2,
+    "avg_conceded": 3.4,
+    "win_rate": 0.2
+  },
+  "Guam": {
+    "avg_scored": 2.6,
+    "avg_conceded": 1.8,
+    "win_rate": 0.6
+  },
+  "Chad": {
+    "avg_scored": 1.2,
+    "avg_conceded": 2.4,
+    "win_rate": 0.0
+  },
+  "Saint Martin": {
+    "avg_scored": 1.0,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Saint Barthelemy": {
+    "avg_scored": 3.0,
+    "avg_conceded": 2.4,
+    "win_rate": 0.4
+  },
+  "Antigua and Barbuda": {
+    "avg_scored": 0.4,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Anguilla": {
+    "avg_scored": 1.2,
+    "avg_conceded": 2.2,
+    "win_rate": 0.6
+  },
+  "Liechtenstein": {
+    "avg_scored": 0.2,
+    "avg_conceded": 3.8,
+    "win_rate": 0.0
+  },
+  "Mauritania": {
+    "avg_scored": 0.2,
+    "avg_conceded": 1.6,
+    "win_rate": 0.0
+  },
+  "Congo": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.8,
+    "win_rate": 0.0
+  },
+  "Morocco": {
+    "avg_scored": 1.8,
+    "avg_conceded": 0.2,
+    "win_rate": 0.8
+  },
+  "Equatorial Guinea": {
+    "avg_scored": 1.0,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Ethiopia": {
+    "avg_scored": 1.6,
+    "avg_conceded": 1.6,
+    "win_rate": 0.4
+  },
+  "Madagascar": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.2,
+    "win_rate": 0.8
+  },
+  "Mayotte": {
+    "avg_scored": 0.8,
+    "avg_conceded": 1.0,
+    "win_rate": 0.2
+  },
+  "Saint Lucia": {
+    "avg_scored": 0.8,
+    "avg_conceded": 2.6,
+    "win_rate": 0.2
+  },
+  "Comoros": {
+    "avg_scored": 2.2,
+    "avg_conceded": 2.4,
+    "win_rate": 0.2
+  },
+  "San Marino": {
+    "avg_scored": 0.4,
+    "avg_conceded": 5.0,
+    "win_rate": 0.0
+  },
+  "Central African Republic": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.4,
+    "win_rate": 0.4
+  },
+  "Nicaragua": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.2,
+    "win_rate": 0.2
+  },
+  "Peru": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.8,
+    "win_rate": 0.0
+  },
+  "Mauritius": {
+    "avg_scored": 0.2,
+    "avg_conceded": 1.4,
+    "win_rate": 0.0
+  },
+  "Guinea-Bissau": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.0,
+    "win_rate": 0.2
+  },
+  "Burundi": {
+    "avg_scored": 0.0,
+    "avg_conceded": 1.2,
+    "win_rate": 0.0
+  },
+  "Liberia": {
+    "avg_scored": 1.2,
+    "avg_conceded": 1.8,
+    "win_rate": 0.2
+  },
+  "St Vincent & Grenadines": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.2,
+    "win_rate": 0.6
+  },
+  "Belize": {
+    "avg_scored": 2.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.8
+  },
+  "French Guiana": {
+    "avg_scored": 1.4,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Suriname": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Iraq": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.0,
+    "win_rate": 0.6
+  },
+  "British Virgin Islands": {
+    "avg_scored": 3.4,
+    "avg_conceded": 1.2,
+    "win_rate": 0.8
+  },
+  "Reunion": {
+    "avg_scored": 0.8,
+    "avg_conceded": 0.8,
+    "win_rate": 0.2
+  },
+  "Saint Pierre and Miquelon": {
+    "avg_scored": 0.4,
+    "avg_conceded": 11.4,
+    "win_rate": 0.0
+  },
+  "Tahiti": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.6
+  },
+  "New Caledonia": {
+    "avg_scored": 1.8,
+    "avg_conceded": 1.2,
+    "win_rate": 0.6
+  },
+  "Barbados": {
+    "avg_scored": 1.4,
+    "avg_conceded": 2.4,
+    "win_rate": 0.4
+  },
+  "Dominica": {
+    "avg_scored": 1.2,
+    "avg_conceded": 3.0,
+    "win_rate": 0.0
+  },
+  "Guyana": {
+    "avg_scored": 3.0,
+    "avg_conceded": 0.8,
+    "win_rate": 1.0
+  },
+  "Puerto Rico": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.2,
+    "win_rate": 0.2
+  },
+  "Cayman Islands": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Montserrat": {
+    "avg_scored": 0.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.2
+  },
+  "Macao": {
+    "avg_scored": 0.2,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Maldives": {
+    "avg_scored": 0.4,
+    "avg_conceded": 1.8,
+    "win_rate": 0.0
+  },
+  "Dominican Republic": {
+    "avg_scored": 0.8,
+    "avg_conceded": 0.2,
+    "win_rate": 0.4
+  },
+  "East Timor": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.6,
+    "win_rate": 0.2
+  },
+  "Laos": {
+    "avg_scored": 0.6,
+    "avg_conceded": 3.2,
+    "win_rate": 0.2
+  },
+  "Cambodia": {
+    "avg_scored": 1.2,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Cuba": {
+    "avg_scored": 2.0,
+    "avg_conceded": 0.4,
+    "win_rate": 0.8
+  },
+  "Afghanistan": {
+    "avg_scored": 0.4,
+    "avg_conceded": 1.2,
+    "win_rate": 0.0
+  },
+  "Zanzibar": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.0,
+    "win_rate": 0.0
+  },
+  "Somalia": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Vanuatu": {
+    "avg_scored": 1.6,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Mongolia": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.4,
+    "win_rate": 0.4
+  },
+  "Gibraltar": {
+    "avg_scored": 0.2,
+    "avg_conceded": 2.8,
+    "win_rate": 0.0
+  },
+  "Nepal": {
+    "avg_scored": 0.6,
+    "avg_conceded": 1.4,
+    "win_rate": 0.0
+  },
+  "Bhutan": {
+    "avg_scored": 0.6,
+    "avg_conceded": 4.2,
+    "win_rate": 0.0
+  },
+  "Pakistan": {
+    "avg_scored": 0.2,
+    "avg_conceded": 1.8,
+    "win_rate": 0.0
+  },
+  "US Virgin Islands": {
+    "avg_scored": 2.2,
+    "avg_conceded": 1.2,
+    "win_rate": 0.4
+  },
+  "Turks and Caicos Islands": {
+    "avg_scored": 1.6,
+    "avg_conceded": 1.8,
+    "win_rate": 0.4
+  },
+  "Bahamas": {
+    "avg_scored": 0.4,
+    "avg_conceded": 4.8,
+    "win_rate": 0.0
+  },
+  "Solomon Islands": {
+    "avg_scored": 1.0,
+    "avg_conceded": 2.0,
+    "win_rate": 0.0
+  },
+  "Fiji": {
+    "avg_scored": 0.2,
+    "avg_conceded": 3.2,
+    "win_rate": 0.0
+  },
+  "Seychelles": {
+    "avg_scored": 0.0,
+    "avg_conceded": 5.6,
+    "win_rate": 0.0
+  },
+  "Samoa": {
+    "avg_scored": 1.0,
+    "avg_conceded": 3.2,
+    "win_rate": 0.4
+  },
+  "Eritrea": {
+    "avg_scored": 1.4,
+    "avg_conceded": 1.0,
+    "win_rate": 0.4
+  },
+  "Lesotho": {
+    "avg_scored": 0.4,
+    "avg_conceded": 1.4,
+    "win_rate": 0.2
+  },
+  "Tuvalu": {
+    "avg_scored": 1.8,
+    "avg_conceded": 5.6,
+    "win_rate": 0.4
+  },
+  "American Samoa": {
+    "avg_scored": 0.8,
+    "avg_conceded": 4.8,
+    "win_rate": 0.2
+  },
+  "Papua New Guinea": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.8
+  },
+  "Cook Islands": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.8,
+    "win_rate": 0.2
+  },
+  "Kiribati": {
+    "avg_scored": 0.5,
+    "avg_conceded": 11.5,
+    "win_rate": 0.0
+  },
+  "Bermuda": {
+    "avg_scored": 0.6,
+    "avg_conceded": 3.6,
+    "win_rate": 0.0
+  },
+  "Djibouti": {
+    "avg_scored": 0.2,
+    "avg_conceded": 2.8,
+    "win_rate": 0.0
+  },
+  "S\u00e3o Tom\u00e9 and Pr\u00edncipe": {
+    "avg_scored": 0.8,
+    "avg_conceded": 2.8,
+    "win_rate": 0.2
+  },
+  "Tonga": {
+    "avg_scored": 2.2,
+    "avg_conceded": 2.0,
+    "win_rate": 0.4
+  },
+  "Kurdistan": {
+    "avg_scored": 2.0,
+    "avg_conceded": 1.0,
+    "win_rate": 0.5
+  },
+  "Northern Cyprus": {
+    "avg_scored": 2.0,
+    "avg_conceded": 0.0,
+    "win_rate": 1.0
+  },
+  "South Sudan": {
+    "avg_scored": 0.2,
+    "avg_conceded": 2.2,
+    "win_rate": 0.0
+  },
+  "Brunei": {
+    "avg_scored": 0.4,
+    "avg_conceded": 3.2,
+    "win_rate": 0.2
+  },
+  "Greenland": {
+    "avg_scored": 0.5,
+    "avg_conceded": 3.0,
+    "win_rate": 0.0
+  },
+  "Falkland Islands": {
+    "avg_scored": 0.0,
+    "avg_conceded": 8.0,
+    "win_rate": 0.0
+  },
+  "Sint Maarten": {
+    "avg_scored": 1.4,
+    "avg_conceded": 0.8,
+    "win_rate": 0.6
+  },
+  "Swaziland": {
+    "avg_scored": 0.6,
+    "avg_conceded": 2.4,
+    "win_rate": 0.0
+  },
+  "Chagos Islands": {
+    "avg_scored": 1.0,
+    "avg_conceded": 6.0,
+    "win_rate": 0.0
+  },
+  "Marshall Islands": {
+    "avg_scored": 1.0,
+    "avg_conceded": 3.5,
+    "win_rate": 0.0
+  },
+  "Sao Tome and Principe": {
+    "avg_scored": 0.75,
+    "avg_conceded": 3.0,
+    "win_rate": 0.25
+  },
+  "S\u00e3o Tome and Principe": {
+    "avg_scored": 0.75,
+    "avg_conceded": 3.0,
+    "win_rate": 0.25
+  }
+}

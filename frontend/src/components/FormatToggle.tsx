@@ -1,4 +1,4 @@
-import { TournamentFormat } from "../types";
+import type { TournamentFormat } from "../types";
 
 interface FormatToggleProps {
 	format: TournamentFormat;
