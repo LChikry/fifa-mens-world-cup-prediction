@@ -1,78 +1,79 @@
 {
-  "name": "2026 FIFA World Cup (Projected)",
+  "name": "2026 FIFA World Cup",
   "format": "48_team",
   "groups": {
     "A": [
-      "Spain",
-      "Australia",
-      "Switzerland",
-      "Czech Republic"
+      "Mexico",
+      "South Africa",
+      "South Korea",
+      "Wales"
     ],
     "B": [
-      "Argentina",
-      "Mexico",
-      "Norway",
-      "Nigeria"
+      "Canada",
+      "Ukraine",
+      "Qatar",
+      "Switzerland"
     ],
     "C": [
-      "France",
-      "Algeria",
-      "Denmark",
-      "Costa Rica"
-    ],
-    "D": [
-      "Colombia",
-      "Canada",
-      "Turkey",
+      "Brazil",
+      "Morocco",
+      "Haiti",
       "Scotland"
     ],
-    "E": [
-      "England",
-      "Iran",
-      "Belgium",
-      "Jordan"
-    ],
-    "F": [
-      "Japan",
-      "Uruguay",
-      "Russia",
+    "D": [
+      "United States",
+      "Paraguay",
+      "Australia",
       "Greece"
     ],
+    "E": [
+      "Germany",
+      "Cura\u00e7ao",
+      "Ivory Coast",
+      "Ecuador"
+    ],
+    "F": [
+      "Netherlands",
+      "Japan",
+      "Turkey",
+      "Tunisia"
+    ],
     "G": [
-      "Brazil",
-      "Italy",
-      "Paraguay",
-      "Chile"
+      "Belgium",
+      "Egypt",
+      "Iran",
+      "New Zealand"
     ],
     "H": [
-      "Morocco",
-      "Uzbekistan",
-      "Panama",
-      "Serbia"
+      "Spain",
+      "Cape Verde",
+      "Saudi Arabia",
+      "Uruguay"
     ],
     "I": [
-      "Portugal",
-      "United States",
-      "Austria",
-      "Egypt"
+      "France",
+      "Senegal",
+      "Norway",
+      "Bolivia"
     ],
     "J": [
-      "Netherlands",
-      "Senegal",
-      "Iraq",
-      "Ivory Coast"
+      "Argentina",
+      "Algeria",
+      "Austria",
+      "Jordan"
     ],
     "K": [
-      "Germany",
-      "Croatia",
-      "Tunisia",
-      "Poland"
+      "Portugal",
+      "Jamaica",
+      "Uzbekistan",
+      "Colombia"
     ],
     "L": [
-      "South Korea",
-      "Ecuador",
-      "Saudi Arabia",
-      "Ukraine"
+      "England",
+      "Croatia",
+      "Ghana",
+      "Panama"
     ]
-  }
+  },
+  "note": "Official draw Dec 2024. Playoff spots: Wales, Ukraine, Turkey, Greece (UEFA), Jamaica, Bolivia (FIFA)"
 }
