@@ -21,7 +21,7 @@ app = FastAPI(
 )
 
 origins = [
-    "fifa-mens-world-cup-prediction-production.up.railway.app",
+    "machine-learning-world-cup-prediction.up.railway.app",
     "http://localhost:5173", # Keep this for local testing
 ]
 
