@@ -20,15 +20,19 @@ app = FastAPI(
     version="1.0.0"
 )
 
+origins = [
+    "fifa-mens-world-cup-prediction-production.up.railway.app",
+    "http://localhost:5173", # Keep this for local testing
+]
+
 # Configure CORS for frontend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific frontend URL
+    allow_origins=origins,  # In production, replace with specific frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # Request/Response Models
 class TeamResponse(BaseModel):
