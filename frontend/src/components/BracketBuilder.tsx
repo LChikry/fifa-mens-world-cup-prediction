@@ -241,7 +241,7 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 		>
 			<div className="bracket-builder">
 				<header className="builder-header">
-					<h1>World Cup Bracket Predictor</h1>
+					<h1>World Cup Prediction - ML Project</h1>
 					<div className="header-controls">
 						<FormatToggle
 							format={format}
