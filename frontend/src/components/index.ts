@@ -1,5 +1,4 @@
 export { BracketBuilder } from "./BracketBuilder";
-export { BracketVisualization } from "./BracketVisualization";
 export { TeamCard } from "./TeamCard";
 export { GroupSlot } from "./GroupSlot";
 export { TeamSearch } from "./TeamSearch";
