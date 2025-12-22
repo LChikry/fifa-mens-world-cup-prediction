@@ -20,6 +20,7 @@ import { TeamSearch } from "./TeamSearch";
 import { FormatToggle } from "./FormatToggle";
 import { PresetSelector } from "./PresetSelector";
 import { ResultsPanel } from "./ResultsPanel";
+import { MethodologyPanel } from "./MethodologyPanel";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
@@ -43,6 +44,7 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 	const [loading, setLoading] = useState(false);
 	const [activeId, setActiveId] = useState<string | null>(null);
 	const [presetName, setPresetName] = useState<string | null>(null);
+	const [showMethodology, setShowMethodology] = useState(false);
 
 	const sensors = useSensors(
 		useSensor(PointerSensor, {
@@ -241,7 +243,17 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 		>
 			<div className="bracket-builder">
 				<header className="builder-header">
-					<h1>World Cup Prediction - ML Project</h1>
+					<div className="header-title-group">
+						<h1>World Cup Prediction - ML Project</h1>
+						<button
+							className="how-it-works-btn"
+							onClick={() => setShowMethodology(true)}
+							title="Learn how the predictions work"
+						>
+							<span className="how-it-works-icon">?</span>
+							<span className="how-it-works-text">How It Works</span>
+						</button>
+					</div>
 					<div className="header-controls">
 						<FormatToggle
 							format={format}
@@ -330,6 +342,11 @@ export function BracketBuilder({ teams }: BracketBuilderProps) {
 			<DragOverlay>
 				{activeTeam && <TeamCard team={activeTeam} isDragging />}
 			</DragOverlay>
+
+			<MethodologyPanel
+				isOpen={showMethodology}
+				onClose={() => setShowMethodology(false)}
+			/>
 		</DndContext>
 	);
 }

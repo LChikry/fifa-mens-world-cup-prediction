@@ -278,6 +278,115 @@ async def list_presets():
     }
 
 
+@app.get("/api/model-info")
+async def get_model_info():
+    """
+    Get information about the ML model, data sources, and methodology.
+    
+    Returns details about:
+    - Data sources and coverage
+    - Model architecture and hyperparameters
+    - Feature engineering approach
+    - Performance metrics
+    - Tech stack
+    """
+    try:
+        predictor.load_models()
+        
+        # Get team count for coverage stats
+        teams = predictor.get_teams()
+        num_teams = len(teams)
+        
+        # Get top features from model (if available)
+        top_features = []
+        if hasattr(predictor, 'feature_columns') and predictor.feature_columns:
+            top_features = predictor.feature_columns[:10]
+        
+        return {
+            "data_sources": {
+                "matches": {
+                    "name": "International Match Results",
+                    "description": "Historical international football matches from 2010 to present",
+                    "records": "14,000+",
+                    "date_range": "2010 - 2024",
+                    "features": ["Goals scored", "Tournament type", "Venue", "Match date"]
+                },
+                "players": {
+                    "name": "EA Sports FC Player Ratings",
+                    "description": "Comprehensive player statistics from EA Sports FC (FIFA 15-24)",
+                    "records": "100,000+",
+                    "date_range": "FIFA 15 - FIFA 24",
+                    "features": ["Overall rating", "Pace", "Shooting", "Passing", "Dribbling", "Defending", "Physic"]
+                },
+                "rankings": {
+                    "name": "FIFA World Rankings",
+                    "description": "Official FIFA country rankings for additional context",
+                    "records": "200+",
+                    "features": ["Rank", "Points", "Confederation"]
+                }
+            },
+            "model": {
+                "type": "Dual XGBoost Regression",
+                "description": "Two separate gradient boosting models predict expected goals for home and away teams",
+                "hyperparameters": {
+                    "n_estimators": 2000,
+                    "learning_rate": 0.01,
+                    "max_depth": 4,
+                    "subsample": 0.7,
+                    "colsample_bytree": 0.7,
+                    "early_stopping_rounds": 50
+                },
+                "training_split": "Pre-2022 matches for training, 2022+ for validation"
+            },
+            "simulation": {
+                "method": "Poisson-based Monte Carlo",
+                "description": "Predicted goals become lambda parameter for Poisson distribution, then simulated 10,000+ times",
+                "n_sims_per_match": 10000,
+                "n_tournament_sims": "100-500 per request"
+            },
+            "features": {
+                "count": 30,
+                "categories": {
+                    "elo_ratings": {
+                        "description": "Dynamic team strength calculated from 14 years of match history",
+                        "features": ["home_elo", "away_elo", "elo_diff"]
+                    },
+                    "player_quality": {
+                        "description": "Aggregated ratings from top 14 squad members",
+                        "features": ["avg_overall", "max_overall", "avg_attack", "avg_defense", "avg_pace", "avg_shooting", "avg_passing"]
+                    },
+                    "recent_form": {
+                        "description": "Rolling 5-match statistics",
+                        "features": ["form_scored", "form_conceded", "form_win_rate"]
+                    },
+                    "match_context": {
+                        "description": "Tournament and venue information",
+                        "features": ["is_neutral", "is_world_cup", "is_continental"]
+                    }
+                },
+                "top_features": top_features
+            },
+            "performance": {
+                "goals_rmse": "~1.3",
+                "goals_mae": "~1.0",
+                "outcome_accuracy": "~55%",
+                "validation": "2022 World Cup matches"
+            },
+            "coverage": {
+                "teams_available": num_teams,
+                "countries_with_data": "150+"
+            },
+            "tech_stack": {
+                "ml": ["XGBoost 2.0", "scikit-learn", "CuPy (GPU)", "SciPy"],
+                "backend": ["Python 3.11", "FastAPI", "Pandas", "NumPy"],
+                "frontend": ["React 18", "TypeScript", "Vite", "dnd-kit"],
+                "deployment": ["Railway", "Docker"]
+            }
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Failed to get model info: {str(e)}")
+
+
 # Startup event to preload models
 @app.on_event("startup")
 async def startup_event():
